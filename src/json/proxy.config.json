@@ -1,0 +1,13 @@
+{
+    "PRD":{
+        "port" :"3001",
+        "Autorization":"6gwxuxQk/hjbv8gipjU5bTw18rP2OkzCaiQyLwD7HJQ=",
+        "BaseUri":"https://backend-master-page.azurewebsites.net/",
+        "Prefix":"api",
+        "Version":"1.0",
+        "Amb":"PRD",
+        "assets":"https://efectivoya.do/assets/",
+        "land": "http://efectivoya.do/"
+    }
+
+}
