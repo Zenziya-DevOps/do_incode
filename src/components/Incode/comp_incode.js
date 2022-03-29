@@ -86,14 +86,18 @@ function renderSelfieCamera() {
   });
 }
 
-async function app() {}
-
 async function Send_Zenziya_update() {
   Incode_.Inc_InterviewId = session.interviewId;
   Incode_.Inc_InterivewCode = session.interviewCode;
   Incode_.Inc_Token = session.token;
 
-  await Process(Incode_, 'Incode_?Ac=2');
+  alert('interviewId: ' + session.interviewId);
+  alert('interviewCode: ' + session.interviewCode);
+  alert('token: ' + session.token);
+
+  debugger;
+
+  //await Process(Incode_, 'Incode_?Ac=2');
 }
 
 export class COMP_Incode extends Component {
