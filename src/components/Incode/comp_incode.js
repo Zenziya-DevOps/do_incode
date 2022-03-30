@@ -12,14 +12,14 @@ let session;
 const container = document.getElementById('camera-container');
 
 function createOnBoarding() {
-  /* PRD  */
+  /* PRD 
   const apiKey = '64993050ce0ea4c9273ba590e92005a1cea69e34';
   const apiURL = 'https://saas-api.incodesmile.com/';
+ */
+  /* DEV*/
+  const apiURL = 'https://demo-api.incodesmile.com/';
+  const apiKey = 'f3df8f605f09f74f374a07fcd8aa4294cb6dca80';
 
-  /* DEV
-    const apiURL = "https://demo-api.incodesmile.com/";
-    const apiKey = "f3df8f605f09f74f374a07fcd8aa4294cb6dca80";
-    */
   return window.OnBoarding.create({
     apiKey,
     apiURL,
@@ -95,9 +95,7 @@ async function Send_Zenziya_update() {
   alert('interviewCode: ' + session.interviewCode);
   alert('token: ' + session.token);
 
-  debugger;
-
-  //await Process(Incode_, 'Incode_?Ac=2');
+  //await Process(Incode_, 'Incode_?Ac=2'); //Complete_Mp
 }
 
 export class COMP_Incode extends Component {
