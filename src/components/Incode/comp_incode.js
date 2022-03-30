@@ -80,8 +80,10 @@ export default function COMP_Incode() {
   function renderSelfieCamera() {
     onBoarding.renderCamera('selfie', container, {
       onSuccess: () => {
-        alert('Felicidades has completado todo el proceso.');
-        debugger;
+        alert(
+          'Acá hacemos una llamada avisando que terminó el proceso id: ' +
+            searchParams.get('id')
+        );
       },
       onError: showError,
       token: session,
@@ -98,11 +100,7 @@ export default function COMP_Incode() {
     Incode_.Inc_InterivewCode = session.interviewCode;
     Incode_.Inc_Token = session.token;
 
-    for (const entry of searchParams.entries()) {
-      console.log(entry);
-    }
-
-    debugger;
+    alert('Comenzaste el proceso cuyo ID es: ' + searchParams.get('id'));
 
     //await Process(Incode_, 'Incode_?Ac=2'); //Complete_Mp
   }
