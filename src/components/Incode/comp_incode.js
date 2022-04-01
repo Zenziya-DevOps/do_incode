@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Modal, Spinner, Row, Col } from 'react-bootstrap';
-import { Incode_ } from '../../model/incode_';
 import { label_ } from '../../styles/leters';
 import '../../css/Incode.css';
+import { incodeServices } from '../../services/incode.services';
 
 let onBoarding;
 let session;
@@ -95,11 +95,15 @@ export default function COMP_Incode() {
   const [message] = useState('Cargando..');
   const [searchParams] = useSearchParams();
 
-  function Send_Zenziya_update() {
-    Incode_.Inc_InterviewId = session.interviewId;
-    Incode_.Inc_InterivewCode = session.interviewCode;
-    Incode_.Inc_Token = session.token;
-
+  async function Send_Zenziya_update() {
+    var data = {
+      interviewId: session.interviewId,
+      interviewCode: session.interviewCode,
+      token: session.token,
+      entityIdOnboarding: searchParams.get('EntityIdOnboarding')
+    };
+    var asd = await incodeServices.notifyBeginProcess(data);
+    debugger;
     alert('Comenzaste el proceso cuyo ID es: ' + searchParams.get('id'));
 
     //await Process(Incode_, 'Incode_?Ac=2'); //Complete_Mp
