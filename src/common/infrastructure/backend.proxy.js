@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-let AUTHENTICATE_URL = process.env.AUTHENTICATE_URL;
-let API_URL = process.env.API_URL; //'http://localhost:3000'; //
+let AUTHENTICATE_URL = process.env.REACT_APP_AUTHENTICATE_URL;
+let API_URL = process.env.REACT_APP_API_URL; //'http://localhost:3000'; //
 
 export const backendProxy = {
   post
@@ -32,8 +32,8 @@ async function getToken() {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      username: process.env.USERNAME,
-      password: process.env.PASSWORD
+      username: process.env.REACT_APP_USERNAME,
+      password: process.env.REACT_APP_PASSWORD
     })
   };
   const returnedData = await fetch(fullUrl, requestOptions);
