@@ -80,10 +80,7 @@ export default function COMP_Incode() {
   function renderSelfieCamera() {
     onBoarding.renderCamera('selfie', container, {
       onSuccess: () => {
-        alert(
-          'Acá hacemos una llamada avisando que terminó el proceso id: ' +
-            searchParams.get('id')
-        );
+        incodeServices.notifyEndProcess(searchParams.get('EntityIdOnboarding'));
       },
       onError: showError,
       token: session,
@@ -95,18 +92,18 @@ export default function COMP_Incode() {
   const [message] = useState('Cargando..');
   const [searchParams] = useSearchParams();
 
-  async function Send_Zenziya_update() {
+  function Send_Zenziya_update() {
     var data = {
       interviewId: session.interviewId,
       interviewCode: session.interviewCode,
       token: session.token,
       entityIdOnboarding: searchParams.get('EntityIdOnboarding')
     };
-    var asd = await incodeServices.notifyBeginProcess(data);
-    debugger;
-    alert('Comenzaste el proceso cuyo ID es: ' + searchParams.get('id'));
-
-    //await Process(Incode_, 'Incode_?Ac=2'); //Complete_Mp
+    incodeServices.notifyBeginProcess(data);
+    alert(
+      'Comenzaste el proceso cuyo ID es: ' +
+        searchParams.get('EntityIdOnboarding')
+    );
   }
 
   useEffect(async () => {

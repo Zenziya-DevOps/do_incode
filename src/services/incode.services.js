@@ -5,17 +5,12 @@ export const incodeServices = {
   notifyBeginProcess
 };
 
-async function notifyEndProcess() {}
-
-async function notifyBeginProcess() {
-  await login();
+async function notifyEndProcess(EntityIdOnboarding) {
+  await backendProxy.post('/incode/end_process', {
+    EntityIdOnboarding
+  });
 }
 
-async function login() {
-  debugger;
-  var asd = await backendProxy.post('/identity/authenticate', {
-    username: process.env.USERNAME,
-    password: process.env.PASSWORD
-  });
-  console.log(asd);
+async function notifyBeginProcess(data) {
+  await backendProxy.post('/incode/begin_process', data);
 }
