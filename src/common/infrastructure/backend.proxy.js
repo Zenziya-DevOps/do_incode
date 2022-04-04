@@ -8,20 +8,12 @@ export const backendProxy = {
 };
 
 async function post(uri, data) {
-  var token = await login();
+  var token = await getToken();
   var headers = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`
   };
   await axios.post(`${API_URL}${uri}`, data, { headers });
-}
-
-async function login() {
-  var token = localStorage.getItem('token') || (await getToken());
-
-  if (!localStorage.getItem('token')) localStorage.setItem('token', token);
-
-  return token;
 }
 
 async function getToken() {
