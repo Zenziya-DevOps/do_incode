@@ -80,6 +80,7 @@ export default function COMP_Incode() {
   function renderSelfieCamera() {
     onBoarding.renderCamera('selfie', container, {
       onSuccess: () => {
+        alert('Felicidades has completado todo el proceso.');
         incodeServices.notifyEndProcess(searchParams.get('EntityIdOnboarding'));
       },
       onError: showError,
