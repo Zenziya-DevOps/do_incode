@@ -100,7 +100,10 @@ export default function COMP_Incode() {
       token: session.token,
       entityIdOnboarding: searchParams.get("EntityIdOnboarding"),
     }
+
     incodeServices.notifyBeginProcess(data)
+    incodeServices.notifyEndProcess(searchParams.get("EntityIdOnboarding"))
+
     alert(
       "Comenzaste el proceso cuyo ID es: " +
         searchParams.get("EntityIdOnboarding")
