@@ -5,9 +5,9 @@ export const incodeServices = {
   notifyBeginProcess,
 }
 
-async function notifyEndProcess(entityIdOnboarding) {
+async function notifyEndProcess(EntityIdOnboarding) {
   await backendProxy.post("/incode/end_process", {
-    entityIdOnboarding,
+    EntityIdOnboarding,
   })
 }
 
