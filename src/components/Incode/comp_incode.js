@@ -98,7 +98,7 @@ export default function COMP_Incode() {
       interviewId: session.interviewId,
       interviewCode: session.interviewCode,
       token: session.token,
-      entityIdOnboarding: searchParams.get("EntityIdOnboarding"),
+      EntityIdOnboarding: searchParams.get("EntityIdOnboarding"),
     }
     incodeServices.notifyBeginProcess(data)
     alert(
