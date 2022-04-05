@@ -90,7 +90,7 @@ export default function COMP_Incode() {
   }
 
   const [ini, setIni] = useState(true)
-  const [message] = useState("Cargando..")
+  const [message, setMessage] = useState("Cargando..")
   const [searchParams] = useSearchParams()
 
   function Send_Zenziya_update() {
@@ -122,8 +122,9 @@ export default function COMP_Incode() {
         console.log(error.message)
       }
     }
-
-    doSomething() //
+    if (searchParams.get("EntityIdOnboarding") === null)
+      setMessage("URL inválida")
+    else doSomething() //
   }, [])
 
   return (
