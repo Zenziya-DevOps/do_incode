@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let AUTHENTICATE_URL = process.env.AUTHENTICATE_URL;
+let AUTHENTICATE_URL = process.env.REACT_APP_AUTHENTICATE_URL;
 let API_URL = process.env.REACT_APP_API_URL; //'http://localhost:3000'; //
 
 export const backendProxy = {
