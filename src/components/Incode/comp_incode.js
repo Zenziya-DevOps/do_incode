@@ -32,7 +32,7 @@ export default function COMP_Incode() {
   }
 
   function showError() {
-    alert("Ah ocurrido al procesar la solicitud")
+    alert("Ha ocurrido al procesar la solicitud")
   }
 
   async function renderFrontTutorial() {
