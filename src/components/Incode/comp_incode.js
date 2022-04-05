@@ -12,14 +12,14 @@ const container = document.getElementById("camera-container")
 
 export default function COMP_Incode() {
   function createOnBoarding() {
-    /* PRD  */
+    /* PRD  
     const apiKey = "64993050ce0ea4c9273ba590e92005a1cea69e34"
     const apiURL = "https://saas-api.incodesmile.com/"
-
-    /* DEV
-  const apiURL = 'https://demo-api.incodesmile.com/';
-  const apiKey = 'f3df8f605f09f74f374a07fcd8aa4294cb6dca80';
 */
+    /* DEV*/
+    const apiURL = "https://demo-api.incodesmile.com/"
+    const apiKey = "f3df8f605f09f74f374a07fcd8aa4294cb6dca80"
+
     return window.OnBoarding.create({
       apiKey,
       apiURL,
