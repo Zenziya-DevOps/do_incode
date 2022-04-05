@@ -110,7 +110,7 @@ export default function COMP_Incode() {
   useEffect(() => {
     async function doSomething() {
       try {
-        debugger
+        console.log("comenzando")
         onBoarding = createOnBoarding() // initialize the instance
         await onBoarding.warmup()
         const _session = await createSession()
