@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
-import { Modal, Spinner, Row, Col } from "react-bootstrap"
-import { label_ } from "../../styles/leters"
+import CircularIndeterminate from "./circularIndeterminate"
 import "../../css/Incode.css"
 import { incodeServices } from "../../services/incode.services"
+import Box from "@mui/material/Box"
 
 let onBoarding
 let session
@@ -90,7 +90,7 @@ export default function COMP_Incode() {
   }
 
   const [ini, setIni] = useState(true)
-  const [message, setMessage] = useState("Cargando..")
+  const [message, setMessage] = useState("")
   const [searchParams] = useSearchParams()
 
   function Send_Zenziya_update() {
@@ -110,14 +110,20 @@ export default function COMP_Incode() {
   useEffect(() => {
     async function doSomething() {
       try {
-        console.log("comenzando")
-        onBoarding = createOnBoarding() // initialize the instance
-        await onBoarding.warmup()
-        const _session = await createSession()
-        console.log(_session)
-        session = _session
-        await renderFrontTutorial() // render and start autodetect of the front ID camera
-        setIni(false)
+        const isExpiratedLink = await incodeServices.isExpiratedLink(
+          searchParams.get("EntityIdOnboarding")
+        )
+        if (!isExpiratedLink) {
+          onBoarding = createOnBoarding() // initialize the instance
+          await onBoarding.warmup()
+          const _session = await createSession()
+          console.log(_session)
+          session = _session
+          await renderFrontTutorial() // render and start autodetect of the front ID camera
+          setIni(false)
+        } else {
+          setMessage("El link ha expirado. Contacte a un administrador.")
+        }
       } catch (error) {
         console.log(error.message)
       }
@@ -127,16 +133,11 @@ export default function COMP_Incode() {
     else doSomething() //
   }, [])
 
-  return (
-    <Modal show={ini} centered>
-      <Modal.Body style={label_(2, 0)} className="p-5">
-        <Row>
-          <Col>
-            <Spinner animation="grow" className="p-3" />
-            <label className="pl-2"> {message} </label>
-          </Col>
-        </Row>
-      </Modal.Body>
-    </Modal>
+  return message.length === 0 ? (
+    <CircularIndeterminate />
+  ) : (
+    <Box style={{ textAlign: "center" }} p={5}>
+      {message}
+    </Box>
   )
 }
