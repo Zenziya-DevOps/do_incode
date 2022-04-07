@@ -82,6 +82,7 @@ export default function COMP_Incode() {
       onSuccess: () => {
         alert("Felicidades has completado todo el proceso.")
         incodeServices.notifyEndProcess(searchParams.get("EntityIdOnboarding"))
+        setMessage("Felicidades has completado todo el proceso.")
       },
       onError: showError,
       token: session,
@@ -89,7 +90,6 @@ export default function COMP_Incode() {
     })
   }
 
-  const [ini, setIni] = useState(true)
   const [message, setMessage] = useState("")
   const [searchParams] = useSearchParams()
 
@@ -120,7 +120,6 @@ export default function COMP_Incode() {
           console.log(_session)
           session = _session
           await renderFrontTutorial() // render and start autodetect of the front ID camera
-          setIni(false)
         } else {
           setMessage("El link ha expirado. Contacte a un administrador.")
         }
