@@ -17,8 +17,11 @@ export default function COMP_Incode() {
     const apiURL = "https://saas-api.incodesmile.com/"
 */
     /* DEV*/
-    const apiURL = "https://demo-api.incodesmile.com/"
-    const apiKey = "f3df8f605f09f74f374a07fcd8aa4294cb6dca80"
+    // const apiURL = "https://demo-api.incodesmile.com/"
+    // const apiKey = "f3df8f605f09f74f374a07fcd8aa4294cb6dca80"
+
+    const apiURL = process.env.REACT_APP_API_URL_INCODE
+    const apiKey = process.env.REACT_APP_API_KEY_INCODE
 
     return window.OnBoarding.create({
       apiKey,
