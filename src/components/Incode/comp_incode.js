@@ -52,7 +52,7 @@ export default function COMP_Incode() {
       onSuccess: renderBackTutorial,
       onError: showError,
       token: session,
-      numberOfTries: 3,
+      numberOfTries: 50,
     })
   }
 
@@ -68,7 +68,7 @@ export default function COMP_Incode() {
       onSuccess: processId,
       onError: showError,
       token: session,
-      numberOfTries: 3,
+      numberOfTries: 50,
     })
   }
 
@@ -82,14 +82,16 @@ export default function COMP_Incode() {
 
   function renderSelfieCamera() {
     onBoarding.renderCamera("selfie", container, {
-      onSuccess: () => {
+      onSuccess: async () => {
+        await incodeServices.notifyEndProcess(
+          searchParams.get("EntityIdOnboarding")
+        )
         alert("Felicidades has completado todo el proceso.")
-        incodeServices.notifyEndProcess(searchParams.get("EntityIdOnboarding"))
-        setMessage("Felicidades has completado todo el proceso.")
+        window.location.href = "https://google.com/"
       },
       onError: showError,
       token: session,
-      numberOfTries: 3,
+      numberOfTries: 50,
     })
   }
 
@@ -104,10 +106,6 @@ export default function COMP_Incode() {
       EntityIdOnboarding: searchParams.get("EntityIdOnboarding"),
     }
     incodeServices.notifyBeginProcess(data)
-    alert(
-      "Comenzaste el proceso cuyo ID es: " +
-        searchParams.get("EntityIdOnboarding")
-    )
   }
 
   useEffect(() => {
