@@ -87,7 +87,8 @@ export default function COMP_Incode() {
           searchParams.get("EntityIdOnboarding")
         )
         alert("Felicidades has completado todo el proceso.")
-        window.location.href = "https://google.com/"
+        window.location.href =
+          "https://api.whatsapp.com/send?phone=18494104542&text=Finalic%C3%A9%20el%20proceso"
       },
       onError: showError,
       token: session,
