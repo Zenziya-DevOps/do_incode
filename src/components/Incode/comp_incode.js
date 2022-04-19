@@ -38,28 +38,15 @@ export default function COMP_Incode() {
     alert("Ha ocurrido al procesar la solicitud")
   }
 
-  async function renderFrontTutorial() {
-    onBoarding.renderFrontTutorial(container, {
-      onSuccess: renderFrontIDCamera,
-      token: session,
-    })
-  }
-
   async function renderFrontIDCamera() {
     await Send_Zenziya_update()
 
     onBoarding.renderCamera("front", container, {
-      onSuccess: renderBackTutorial,
+      onSuccess: renderBackIDCamera,
       onError: showError,
       token: session,
       numberOfTries: 50,
-    })
-  }
-
-  async function renderBackTutorial() {
-    onBoarding.renderBackTutorial(container, {
-      onSuccess: renderBackIDCamera,
-      token: session,
+      showTutorial: true,
     })
   }
 
@@ -69,6 +56,7 @@ export default function COMP_Incode() {
       onError: showError,
       token: session,
       numberOfTries: 50,
+      showTutorial: true,
     })
   }
 
@@ -93,6 +81,7 @@ export default function COMP_Incode() {
       onError: showError,
       token: session,
       numberOfTries: 50,
+      showTutorial: true,
     })
   }
 
@@ -121,7 +110,7 @@ export default function COMP_Incode() {
           const _session = await createSession()
           console.log(_session)
           session = _session
-          await renderFrontTutorial() // render and start autodetect of the front ID camera
+          await renderFrontIDCamera() //renderFrontIDCamera() // render and start autodetect of the front ID camera
         } else {
           setMessage("El link ha expirado. Contacte a un administrador.")
         }
