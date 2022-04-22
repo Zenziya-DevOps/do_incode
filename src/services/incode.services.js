@@ -21,5 +21,5 @@ async function notifyEndProcess(EntityIdOnboarding) {
 }
 
 async function notifyBeginProcess(data) {
-  await backendProxy.post("/incode/begin_process", data)
+  return await backendProxy.post("/incode/begin_process", data)
 }

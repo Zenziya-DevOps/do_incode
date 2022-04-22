@@ -39,15 +39,19 @@ export default function COMP_Incode() {
   }
 
   async function renderFrontIDCamera() {
-    await Send_Zenziya_update()
+    var zzWasNotified = await Send_Zenziya_update()
 
-    onBoarding.renderCamera("front", container, {
-      onSuccess: renderBackIDCamera,
-      onError: showError,
-      token: session,
-      numberOfTries: 50,
-      showTutorial: true,
-    })
+    if (zzWasNotified.data.Error)
+      setMessage("Ha ocurrido un error, por favor contacte a un administrador.")
+    else {
+      onBoarding.renderCamera("front", container, {
+        onSuccess: renderBackIDCamera,
+        onError: showError,
+        token: session,
+        numberOfTries: 50,
+        showTutorial: true,
+      })
+    }
   }
 
   function renderBackIDCamera() {
@@ -88,14 +92,15 @@ export default function COMP_Incode() {
   const [message, setMessage] = useState("")
   const [searchParams] = useSearchParams()
 
-  function Send_Zenziya_update() {
+  async function Send_Zenziya_update() {
     var data = {
       interviewId: session.interviewId,
       interviewCode: session.interviewCode,
       token: session.token,
       EntityIdOnboarding: searchParams.get("EntityIdOnboarding"),
     }
-    incodeServices.notifyBeginProcess(data)
+    var asd = await incodeServices.notifyBeginProcess(data)
+    return asd
   }
 
   useEffect(() => {

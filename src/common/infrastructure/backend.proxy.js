@@ -25,7 +25,8 @@ async function post(uri, data) {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   }
-  await axios.post(`${API_URL}${uri}`, data, { headers })
+
+  return await axios.post(`${API_URL}${uri}`, data, { headers })
 }
 
 async function getToken() {
